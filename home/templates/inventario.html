@@ -1,0 +1,38 @@
+<!-- inventario.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Inventario{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2 class="mb-4">Inventario</h2>
+            
+            <a href="{% url 'procesar_inventario_excel' %}" class="btn btn-outline-success mb-4">Ir al Formulario de Inventario</a>
+
+            <div class="table-responsive rounded-4">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Código</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in inventario_items %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.codigo }}</td>
+                                <td>{{ item.precio }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

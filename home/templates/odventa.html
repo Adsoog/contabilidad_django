@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Página de Órdenes de Venta{% endblock %}
+
+{% block content %}
+    <h1>Listado de Órdenes de Venta</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Código SAP</th>
+                <th scope="col">Nombre Proyecto</th>
+                <th scope="col">Dirección Proyecto</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Observación</th>
+                <th scope="col">Acciones</th>  <!-- Nueva columna para acciones -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for orden_de_venta in ordenes_de_venta %}
+                <tr class="{% cycle 'table-active' '' 'table-primary' 'table-secondary' 'table-success' 'table-danger' 'table-warning' 'table-info' 'table-light' 'table-dark' %}">
+                    <th scope="row">{{ cycle_types.cycle }}</th>
+                    <td>{{ orden_de_venta.codigo_sap }}</td>
+                    <td>{{ orden_de_venta.nombre_proyecto }}</td>
+                    <td>{{ orden_de_venta.direccion_proyecto }}</td>
+                    <td>{{ orden_de_venta.fecha }}</td>
+                    <td>{{ orden_de_venta.observacion }}</td>
+                    <td>
+                        <form action="{% url 'borrar_orden' orden_de_venta.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

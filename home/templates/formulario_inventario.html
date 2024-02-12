@@ -1,0 +1,27 @@
+<!-- formulario_inventario.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="card mb-3 w-50 rounded-4 shadow-lg">
+    <h3 class="card-header">Proceso de Excel</h3>
+    <div class="card-body">
+        <h6 class="card-subtitle text-muted">Scrip automático</h6>
+    </div>
+    <img src="https://1.bp.blogspot.com/-3HLd9M8MxPQ/XhjnP0CgWUI/AAAAAAAABB4/fmWlEgywS50yyQwEDaSQq5-rcXN21lq6wCLcBGAsYHQ/s640/formulas-excel.png" class="card-img-top" alt="Imagen de Excel">
+    <div class="card-body">
+        <!-- Coloca tu formulario aquí -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">PROCESAR</button>
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+
+
+  
+{% endblock %}
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+    <title>{% block title %}Document{% endblock %}</title>
+    <style>
+        body {
+            background-color: #ecf5fe;
+            color: #343a40; /* Color de texto oscuro para todo el cuerpo del documento */
+    
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 190px;
+            padding-top: 56px; /* Altura del navbar superior */
+            background-color: #ffffff; /* Color de fondo blanco */
+            margin-top: 15%; /* Agregamos un margen superior para evitar la superposición con la navbar */
+        }
+
+        .content {
+            margin-left: 240px;
+            padding-top: 56px;
+        }
+
+        .btn-group-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px; /* Ajuste de padding superior para bajar los botones */
+        }
+
+        .btn {
+            width: 100%;
+            margin-bottom: 10px; /* Espacio entre botones */
+        }
+        .formulario-personalizado {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .btn,
+        .card-header,
+        .card-subtitle,
+        .form-control,
+        .navbar-brand,
+        .nav-link,
+        .dropdown-item,
+        .btn-secondary,
+        .text-muted {
+            color: #343a40 !important; /* Color de texto oscuro para elementos específicos */
+        }
+        .navbar{
+          color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar superior -->
+    
+
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">JP Ingenieria</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ordenes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reportes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Acerca</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  
+  
+
+    <!-- Contenido principal y barra lateral -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 bg-light p-3 sidebar">
+                <div class="btn-group-vertical">
+                    <a href="{% url 'home' %}" class="btn btn-primary">Inicio</a>
+                    <a href="{% url 'inventario' %}" class="btn btn-primary">Inventarios</a>
+                    <a href="{% url 'ofventa' %}" class="btn btn-primary">Oferta de Venta</a>
+                    <a href="{% url 'odventa' %}" class="btn btn-primary">Orden de Venta</a>
+                    <a href="{% url 'odcompra' %}" class="btn btn-primary">Orden de Compra</a>
+                    
+                    <!-- Agrega más botones/enlaces según sea necesario -->
+                </div>
+            </div>
+            <div class="col-md-9 offset-md-3 content">
+                <!-- Contenido principal de la página -->
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer fijo -->
+    <footer class="fixed-bottom bg-dark text-light text-center p-2">
+        JP Sistemas
+    </footer>
+
+    <!-- Scripts y archivos JavaScript necesarios -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-M6pqqTl2u3ua6UGVrjDAsjNAdWCD0UcUaT8TJxTfMhI7fYcdOq8CybXfyzpvf2u" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Coloca tus scripts al final del body para mejorar el rendimiento de carga de la página -->
+
+</body>
+</html>
